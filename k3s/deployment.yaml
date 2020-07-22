@@ -34,8 +34,12 @@ spec:
         ports:
         - containerPort: 8080
         env:
-        - name: "XXX"
-          value: "yyy"
+        - name: "ATL_PROXY_NAME"
+          value: "jira.localhost"
+        - name: "ATL_PROXY_PORT"
+          value: "443"
+        - name: "ATL_TOMCAT_SCHEME"
+          value: "https"
         volumeMounts:
         - mountPath: "/var/atlassian/application-data/jira"
           name: "jira-home"
@@ -55,10 +59,9 @@ spec:
 ---
 #
 # We  assume here  that  *.localhost resolves  to  the local  machine.
-# Following URL should be directed to corresponding Service, also with
-# https:// protocoll:
+# Following URL should be directed to corresponding Service.
 #
-#     http://jira.localhost
+#     https://jira.localhost
 #
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
