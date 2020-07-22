@@ -11,6 +11,10 @@ metadata:
   name: jira-core
 spec:
   replicas: 1
+  # If the database is locked by the terminating Pod, the starting Pod
+  # is stuck forever:
+  strategy:
+    type: "Recreate"
   selector:
     matchLabels:
       component: jira-core
@@ -40,6 +44,8 @@ spec:
           value: "443"
         - name: "ATL_TOMCAT_SCHEME"
           value: "https"
+        # - name: "ATL_TOMCAT_SECURE"
+        #   value: "true"
         volumeMounts:
         - mountPath: "/var/atlassian/application-data/jira"
           name: "jira-home"
