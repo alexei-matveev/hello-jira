@@ -19,6 +19,11 @@ spec:
       labels:
         component: jira-core
     spec:
+      # Volumes used by some or all containers of the Pod:
+      volumes:
+      - name: "jira-home"
+        persistentVolumeClaim:
+          claimName: "jira-home"
       containers:
       - name: jira-core
         # docker run -v
@@ -31,6 +36,10 @@ spec:
         env:
         - name: "XXX"
           value: "yyy"
+        volumeMounts:
+        - mountPath: "/var/atlassian/application-data/jira"
+          name: "jira-home"
+
 ---
 apiVersion: v1
 kind: Service
