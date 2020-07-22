@@ -1,4 +1,4 @@
-#### Experiments with Zabbix in k3s
+#### Experiments with Jira in k3s
 
 Assuming you already installed the Token in your local config:
 
@@ -6,11 +6,10 @@ Assuming you already installed the Token in your local config:
     $ kubectl get nodes
     $ source <(kubectl completion bash)
 
-Install Zabbix in Kubernetes
+Install Jira in Kubernetes
 
-    $ kubectl create namespace hello-zabbix
-    $ kubectl config set-context --current --namespace=hello-zabbix
+    $ kubectl create namespace hello-jira
+    $ kubectl config set-context --current --namespace=hello-jira
     $ kubectl apply -k k3s/
 
-Then  visit the  [URL](https://zabbix.localhost).   The default  Admin
-password is "zabbix".
+Then visit the [URL](https://jira.localhost).
